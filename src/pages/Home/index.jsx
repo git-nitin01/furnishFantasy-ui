@@ -1,5 +1,11 @@
 const Home = () => {
-    return <div className="text-[black]">Home</div>;
-  };
-  
-  export default Home;
+  return (
+    <main className="text-[black]">
+      <div>Hero section component</div>
+      <div>Feature Section component</div>
+      <div>Catergory Section components</div>
+    </main>
+  );
+};
+
+export default Home;
