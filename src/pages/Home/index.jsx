@@ -1,9 +1,13 @@
+import CategoriesSection from "./components/CategoriesSection";
+import FeaturedSection from "./components/FetauredSection";
+import Hero from "./components/Hero";
+
 const Home = () => {
   return (
     <main className="text-[black]">
-      <div>Hero section component</div>
-      <div>Feature Section component</div>
-      <div>Catergory Section components</div>
+      <div><Hero /></div>
+      <div><FeaturedSection /></div>
+      <div><CategoriesSection /></div>
     </main>
   );
 };
