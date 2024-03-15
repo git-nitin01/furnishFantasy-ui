@@ -6,6 +6,7 @@ function App() {
   return (
     <>
     <>
+    <h2>Hello furnish fantasy!</h2>
       <div>
       <AppRouter />
       </div>
