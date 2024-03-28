@@ -5,7 +5,7 @@ const useAuth = () => {
 
   useEffect(() => {
     // replace this with actual authentication logic
-    const isAuthenticated = /* Check if the user is authenticated */ true;
+    const isAuthenticated = /* Check if the user is authenticated */ false;
 
     if (isAuthenticated) {
       const userData = {name: 'sagun', email: 'demo@123'}/* Fetch user data */

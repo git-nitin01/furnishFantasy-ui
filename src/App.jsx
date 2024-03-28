@@ -4,13 +4,9 @@ import AppRouter from './routes'
 function App() {
 
   return (
-    <>
-    <>
-      <div>
+    <div>
       <AppRouter />
-      </div>
-    </>
-    </>
+    </div>
   )
 }
 
