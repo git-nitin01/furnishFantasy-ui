@@ -37,7 +37,7 @@ const Modal = (props) => {
     const hoverTransition = 'transition duration-300 ease-in-out'
     return ReactDOM.createPortal(
     <>  
-        <button onClick={clickHandler} className={`absolute md:top-[10%] lg:top-[20%] xl:top-[28%] 2xl:top-[38%] rounded-full px-3 py-1.5 bg-white text-black border-0 hover:bg-black hover:bg-opacity-80 hover:text-white focus:outline-none ${hoverTransition}`}>
+        <button onClick={clickHandler} className={`absolute sm:top-[12%] md:top-[10%] lg:top-[20%] xl:top-[28%] 2xl:top-[38%] rounded-full px-3 py-1.5 bg-white text-black border-0 hover:bg-black hover:bg-opacity-80 hover:text-white focus:outline-none ${hoverTransition}`}>
             &#10006;
         </button>
         {children}
