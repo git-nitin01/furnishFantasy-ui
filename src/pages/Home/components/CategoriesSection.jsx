@@ -40,7 +40,7 @@ const CategoriesSection = () => {
   }, []);
 
   return (
-    <main className="text-black p-8">
+    <main className="text-black">
       <h2 className="text-3xl font-bold mb-6 text-center">Featured Categories</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
         {categories.map(category => (
