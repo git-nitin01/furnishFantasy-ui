@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import $ from 'jquery'
+import axios from 'axios'
 
 function SignUp({isClicked}) {
   // form animation
@@ -17,6 +18,23 @@ function SignUp({isClicked}) {
       }
   })
   }, [isClicked])
+
+  $("#inner-sign-up").on('submit', (e) => {
+    const payload = {
+      "custName": $('#name').val(),
+      "custEmail": $('#email').val(),
+      "custPassword": $('#pass').val()
+    }
+
+    axios.post('http://10.4.2.187:8080/furnishFantasy/user/register', payload)
+    .then((response) => {
+      console.log(`data sent success: ${response}`)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+  })
 
   return (
       <div id="top-container-1" className='formContainer sm:scale-100 scale-[0.50]'>
