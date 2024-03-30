@@ -3,14 +3,14 @@ import SignIn from './SignIn'
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 import SignUp from './SignUp'
-import $, { error } from 'jquery'
+import $ from 'jquery'
 
 const Dialog = () => {
 
     // false --> Sign in
     // true --> Sign up
     const [isClicked, setIsClicked] = useState(false)
-    const styles = "bg-white flex flex-row relative mx-auto rotate-90 sm:rotate-0 h-[60vw] w-[800px] sm:h-[500px] sm:w-[500px] rounded-3xl shadow-3xl overflow-clip" //overflow-hidden
+    const styles = "bg-white flex flex-row relative mx-auto rotate-90 sm:rotate-0 h-[60vw] w-[800px] sm:h-[500px] sm:w-[500px] rounded-3xl shadow-3xl overflow-hidden" //overflow-hidden
     
     // adding styles to fields & buttons
     const inpStyles = 'bg-white shadow-lg border border-gray-200 h-10 rounded-lg my-2 p-2'

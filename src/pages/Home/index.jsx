@@ -6,7 +6,7 @@ import Hero from "./components/Hero";
 const Home = () => {
   return (
     <main className="text-[black]">
-      <div><Hero /></div>
+      <Hero />
       <div><FeaturedSection /></div>
       <div><CategoriesSection /></div>
       <FooterSection/>
