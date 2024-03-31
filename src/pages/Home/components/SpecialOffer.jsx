@@ -15,7 +15,7 @@ const SpecialOffers = () => {
             $('.special-card').fadeIn(1500);
             $(".special-card").css('transition', 'opacity 1s ease-in-out');
             shuffleSlides();
-        }, 1500)
+        }, 2000)
        
     }, []);
 
@@ -30,7 +30,7 @@ const SpecialOffers = () => {
     };
 
     return (
-        <div className="mb-8 special-offers" style={{ display: 'none' }}>
+        <div className="mb-2 special-offers" style={{ display: 'none' }}>
             <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Special Offers</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {shuffledSlides.map((slide, index) => (
