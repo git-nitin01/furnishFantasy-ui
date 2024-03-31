@@ -1,8 +1,8 @@
 import CategoriesSection from "./components/CategoriesSection";
 import FAQs from "./components/FAQs";
 import FeaturedSection from "./components/FetauredSection";
-import FooterSection from "./components/FooterSection";
 import Hero from "./components/Hero";
+import NewsletterSignup from "./components/NewsletterSignup";
 import SpecialOffers from "./components/SpecialOffer";
 
 const Home = () => {
@@ -14,6 +14,7 @@ const Home = () => {
       <div className="p-8"><FeaturedSection /></div>
       <div className="p-8"><SpecialOffers /></div>
       <div className="p-8"><FAQs /></div>
+      <NewsletterSignup />
     </main>
   );
 };

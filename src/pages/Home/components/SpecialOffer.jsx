@@ -10,7 +10,7 @@ const SpecialOffers = () => {
 
     useEffect(() => {
         $('.special-offers').fadeIn();
-
+        shuffleSlides()
         setInterval(() => {
             $('.special-card').fadeIn(1500);
             $(".special-card").css('transition', 'opacity 1s ease-in-out');
