@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+
+//import './styles.css';
 
 const slides = [
   { image: "/images/Picture1.png" },
@@ -16,34 +18,37 @@ const slides = [
 const Hero = () => {
   return (
     <main className="text-[black]">
-      <div className="mt-8 font-serif text-4xl font-semibold tracking-wider text-blue-400">YOUR SPACE WITH US</div>
-      <Swiper
+    {/*</main>*/ }
+    <Swiper
         effect={'coverflow'}
-        centeredSlides ={true}       
-        loop={true}
-        modules={[EffectCoverflow, Pagination]}
-        speed={1000}
-        spaceBetween={30}
+        grabCursor={true}
+        centeredSlides ={true}      
         slidesPerView={'auto'}
         coverflowEffect={{
-          rotate: -15,
-          stretch: 5,
-          depth: 100,
-          modifier: 10,
-          slideShadows: true,
+          rotate: 50, //-15 - 60
+          stretch: 0, // 5 - 5
+          depth: 100, //10 - 10
+          modifier: 1, //10 - 1
+          slideShadows: false,
+          scale: 1,
         }}
+        loop={true}
+        speed={1000}
+        spaceBetween={-150}
         autoplay={{
-          delay: 3500,
+          delay: 1800,
           disableOnInteraction: false,
         }}
-        
-        className="mySwiper2"
+        pagination={true}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
+        className="mySwiper"
+
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <img
               src={slide.image}
-              alt={`Slide ${index + 1}`}
+              alt={`Slide ${index}`}
               className="w-full"
               style={{transform: 'scale(0.8)'}}
             />

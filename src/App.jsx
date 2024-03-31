@@ -6,7 +6,7 @@ function App() {
   return (
     <>
     <>
-      <div>
+      <div class="w-full ...">
       <AppRouter />
       </div>
     </>
