@@ -32,8 +32,9 @@ const FeaturedSection = () => {
 
   return (
     <main className="text-black">
-      <h2 className="text-2xl font-bold text-center">Featured Photos</h2>
-      <div className="flex flex-wrap justify-between">
+       <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
+     
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {/* Each item */}
         {[
           { imageUrl: "images/images1.jpg", title: "Full Furnish Furniture", price:1999 },
@@ -47,7 +48,7 @@ const FeaturedSection = () => {
           { imageUrl: "images/images4.jpg", title: "Cupboard", price: 199 },
           { imageUrl: "images/image5.jpg", title: "Another Furniture", price: 299 },
         ].map((item, index) => (
-          <div key={index} className="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1 overflow-hidden">
+          <div key={index} className="relative overflow-hidden">
             <a href={dashboardUrl} className="block relative rounded-xl h-48 overflow-hidden">
               <img src={item.imageUrl} alt={`Photo ${index + 1}`} className="photo object-cover w-full h-full" />
               {/* Displaying prices */}
