@@ -1,40 +1,22 @@
-import React from 'react'
-import { useState } from 'react'
-import ProdModal from './ProdModal' 
+// Prod.js
+import React from 'react';
 
-function Prod({name, category, price, desc}) {
-
-    const [prodModal, setProdModal] = useState(false)
-
-    const handleProdModal = () => {
-        setProdModal(!prodModal)
-    }
-
+function Prod({ name, category, price }) {
     return (
-        <div>
-            <div id="product_card" className="cursor-pointer flex flex-col w-60 h-[18.5em] shadow-2xl mb-11 mr-11 rounded-xl overflow-hidden">
-                <div onClick={handleProdModal} className="flex justify-center">
-                    <img src="src/assets/image.png" alt="product" />
-                </div>
-
-                <div id="prod_details" className='flex flex-col pt-2'>
-                    <div className="flex justify-center">
-                        <h2>{name}</h2>
-                    </div>
-                    <div className="flex justify-center">
-                        <p>{`$${price}`}</p>
-                    </div>
-                    <div className="text-center">
-                        <button className='bg-black bg-opacity-[0.7] p-2 rounded-xl text-white hover:bg-opacity-[1] hover:transition duration-500 ease-in-out'>Add to Cart</button>
-                    </div>
-                </div>
+        <div className="w-full sm:w-64 bg-white rounded-lg shadow-md">
+            <div className="text-center mb-2">
+                <img src="src/assets/image.png" alt="product" className="mx-auto" />
             </div>
-
-            {prodModal && (
-                <ProdModal name={name} category={category} price={price} modal={prodModal} description={desc}/>
-            )}
+            <div className="text-center mb-2">
+                <h2 className="text-lg font-bold">{name}</h2>
+                <p className="text-sm text-gray-600">{category}</p>
+                <p className="text-lg font-bold">${price}</p>
+            </div>
+            <div className="text-center mb-2">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Add to Cart</button>
+            </div>
         </div>
-    )
+    );
 }
 
-export default Prod
+export default Prod;

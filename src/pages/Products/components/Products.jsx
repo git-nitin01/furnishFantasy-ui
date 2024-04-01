@@ -1,30 +1,36 @@
-import React from 'react'
-import Prod from './Prod'
-import $ from 'jquery'
+// Products.js
+import React, { useState } from 'react';
+import Prod from './Prod';
 
-function Products({}) {
-    const products = [
-        { id: 1, name: 'Product 1', category: 'Electronics', price: 30, description: 'This is a product description from the backend API response for product 1'},
-        { id: 2, name: 'Product 2', category: 'Clothing', price: 20, description: 'This is a product description from the backend API response for product 2'},
-        { id: 3, name: 'Product 3', category: 'Books', price: 40, description: 'This is a product description from the backend API response for product 3'},
-        { id: 4, name: 'Product 4', category: 'Electronics', price: 50, description: 'This is a product description from the backend API response for product 4'},
-      ];
+function Products({ products }) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 6; // Change this value as needed
 
+    // Calculate index of the first and last product on the current page
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-
-    $(() => {
-        const $prod_container = $('#prod_container');
-        const prod_container_style = "pl-[22%] flex flex-row flex-wrap overflow-hidden p-5";
-        $prod_container.addClass(prod_container_style);
-    })
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div id="prod_container">
-            {products.map((product, index) => (
-                <Prod key={index} name={product.name} category={product.category} price={product.price} desc={product.description} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6">
+            {currentProducts.map((product, index) => (
+                <Prod key={index} name={product.name} category={product.category} price={product.price} />
             ))}
+            {/* Second Row */}
+            {products.length > productsPerPage && (
+                <div className="col-span-full sm:col-span-3 lg:col-span-3 flex justify-center">
+                    {Array.from({ length: Math.ceil(products.length / productsPerPage) }, (_, index) => (
+                        <button key={index} onClick={() => paginate(index + 1)} className={`mx-2 px-3 py-1 bg-gray-200 rounded ${currentPage === index + 1 ? 'bg-gray-400' : ''}`}>
+                            {index + 1}
+                        </button>
+                    ))}
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
-export default Products
+export default Products;

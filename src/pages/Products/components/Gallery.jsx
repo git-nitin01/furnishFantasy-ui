@@ -1,65 +1,59 @@
-import React from 'react'
-import Filters from './Filters'
-import Products from './Products'
-import $ from 'jquery'
+// Gallery.js
+import React from 'react';
+import Filters from './Filters';
+import Products from './Products';
 
 function Gallery() {
+    const products = [
+        { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
+        { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
+        { id: 3, name: 'Product 3', category: 'Books', price: 40 },
+        { id: 4, name: 'Product 4', category: 'Electronics', price: 50 },
+        { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
+        { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
+        { id: 3, name: 'Product 3', category: 'Books', price: 40 },
+        { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
+        { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
+        { id: 3, name: 'Product 3', category: 'Books', price: 40 },
+        { id: 4, name: 'Product 4', category: 'Electronics', price: 50 },
+        { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
+        { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
+        { id: 3, name: 'Product 3', category: 'Books', price: 40 },
+        { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
+        { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
+        { id: 3, name: 'Product 3', category: 'Books', price: 40 },
+    ];
 
-    $(() => {
-        const $header = $('#top-heading');
-        const header_style = "block my-[10px] text-4xl text-center font-bold text-black";
-        $header.addClass(header_style);
+    const filterProducts = (category) => {
+        console.log('Category:', category);
+    };
 
-        const $gallery = $('#gallery-container');
-        const gallery_style = "p-[10px] flex relative text-black w-screen";
-        $gallery.addClass(gallery_style);
+    const filterProductsByPrice = (price) => {
+        console.log('Price Range:', price);
+    };
 
+    const sortProducts = (sort) => {
+        console.log('Sort By:', sort);
+    };
 
-    })
-     // Dummy product list
-  const products = [
-    { id: 1, name: 'Product 1', category: 'Electronics', price: 30 },
-    { id: 2, name: 'Product 2', category: 'Clothing', price: 20 },
-    { id: 3, name: 'Product 3', category: 'Books', price: 40 },
-    { id: 4, name: 'Product 4', category: 'Electronics', price: 50 },
-  ];
+    const categories = [...new Set(products.map(product => product.category))];
 
-  // Function to filter products based on selected filters
-  const filterProducts = (category) => {
-    // You can perform actions like fetching products based on selected filters here
-    console.log('Category:', category);
-  };
-
-  const filterProductsByPrice = (price) => {
-    // You can perform actions like fetching products based on selected filters here
-    console.log('Price Range:', price);
-  };
-
-  const sortProducts = (sort) => {
-    // You can perform actions like fetching products based on selected filters here
-    console.log('Sort By:', sort);
-  };
-
-  // Extract categories from products
-  const categories = [...new Set(products.map(product => product.category))];
-
-  return (
-    <main className='mt-[70px]'>
-    <div className='z-1 h-screen mt-[50px]'>
-        <h1 id="top-heading">Product Gallery</h1>
-        <div id="gallery-container">
-            
-            <Filters
-            categories={categories} 
-            onCategoryChange={filterProducts} 
-            onPriceChange={filterProductsByPrice} 
-            onSortChange={sortProducts} 
-            />
-            <Products/>
-        </div>
-    </div>
-    </main>
-  );
+    return (
+        <main className='mt-10 px-8 bg-[#EEEEEE]'>
+            <div className='py-10 mx-auto'>
+                <h1 className="text-4xl font-bold text-center mb-8">Product Gallery</h1>
+                <div className="flex flex-col lg:flex-row justify-center items-start">
+                    <Filters
+                        categories={categories} 
+                        onCategoryChange={filterProducts} 
+                        onPriceChange={filterProductsByPrice} 
+                        onSortChange={sortProducts} 
+                    />
+                    <Products products={products} />
+                </div>
+            </div>
+        </main>
+    );
 }
 
-export default Gallery
+export default Gallery;
