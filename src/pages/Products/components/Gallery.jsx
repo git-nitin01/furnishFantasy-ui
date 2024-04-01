@@ -7,7 +7,7 @@ function Gallery() {
 
     $(() => {
         const $header = $('#top-heading');
-        const header_style = "block mb-[10px] text-4xl text-center font-bold text-black";
+        const header_style = "block my-[10px] text-4xl text-center font-bold text-black";
         $header.addClass(header_style);
 
         const $gallery = $('#gallery-container');
@@ -44,7 +44,8 @@ function Gallery() {
   const categories = [...new Set(products.map(product => product.category))];
 
   return (
-    <div className='z-1 absolute mt-[50px]'>
+    <main className='mt-[70px]'>
+    <div className='z-1 h-screen mt-[50px]'>
         <h1 id="top-heading">Product Gallery</h1>
         <div id="gallery-container">
             
@@ -57,6 +58,7 @@ function Gallery() {
             <Products/>
         </div>
     </div>
+    </main>
   );
 }
 

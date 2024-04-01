@@ -1,8 +1,8 @@
 const FooterSection = () => {
     return (
-      <footer className="bg-gray-800 text-gray-300 py-8">
+      <footer className="bg-gray-800 text-gray-300 py-8 pb-16">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-          <div className="md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+          <div className="md:w-1/3 sm:text-center text-left mb-4 md:mb-0">
             <h2 className="text-xl font-bold">Contact Us</h2>
             <p className="mt-2">Feel free to reach out to us for any inquiries.</p>
           </div>

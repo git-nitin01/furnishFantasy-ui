@@ -24,7 +24,7 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange }) 
 
     $(() => {
         const $card = $('.card');
-        const card_style = "fixed bg-white w-[18%] h-screen border-r-2 pl-7 pr-3 pt-6 pb-8 mb-4";
+        const card_style = "fixed bg-white w-[18%] border-r-2 pl-7 pr-3 pt-6 pb-8 mb-4";
         $card.addClass(card_style);
 
         const $title = $('.card-title');
