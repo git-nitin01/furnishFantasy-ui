@@ -29,21 +29,22 @@ import { CartProvider } from "../Context/cartContext";
            <Route
         path="/"
         element={
-          <Layout>
-            {isLoading ? <Spinner /> : <Suspense fallback={<Spinner/>}>
-              <Home />
-            </Suspense> }
-          </Layout>
+          isLoading ? <Spinner /> : <Suspense fallback={<Spinner/>}>
+              <Layout>
+                <Home />
+              </Layout>
+
+            </Suspense> 
         }
       />
         <Route
         path="/gallery"
         element={
-          <Layout>
-            {isLoading ? <Spinner /> : <Suspense fallback={<Spinner/>}>
-              <ProductPage />
-            </Suspense> }
-          </Layout>
+          isLoading ? <Spinner /> : <Suspense fallback={<Spinner/>}>
+              <Layout>
+                <ProductPage />
+              </Layout>
+            </Suspense> 
         }
       />
       
