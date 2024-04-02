@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import { CartContext } from "../../../Context/cartContext";
@@ -7,9 +7,14 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 const ProdModal = ({ name, category, price, modal, description, img, id }) => {
   const [isModal, setIsModal] = useState(modal);
   const [quantity, setQuantity] = useState(1);
-  const modalRoot = document.createElement("div");
+  const modalRootRef = useRef(null);
+  if(!modalRootRef.current) {
+    modalRootRef.current = document.createElement("div");
+  }
+  const modalRoot = modalRootRef.current;
   modalRoot.className = "z-[2] mt-14 top-0 w-screen h-screen fixed";
 console.log("modal", modal, isModal)
+
   useEffect(() => {
     setIsModal(modal);
     return () => {
@@ -43,6 +48,7 @@ console.log("modal", modal, isModal)
       document.body.style.overflow = "auto";
     };
   }, [isModal]);
+
 
   const clickHandler = () => {
     setIsModal(!isModal);
@@ -132,7 +138,8 @@ console.log("modal", modal, isModal)
                   </button>
                   <button
                     className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300"
-                    onClick={() =>
+                    onClick={() =>{
+                      setQuantity(1);
                       dispatch({
                         type: "ADD_PRODUCTS",
                         payload: {
@@ -144,6 +151,7 @@ console.log("modal", modal, isModal)
                           img,
                         },
                       })
+                    }
                     }
                   >
                     Add to Cart
@@ -159,4 +167,4 @@ console.log("modal", modal, isModal)
   );
 };
 
-export default ProdModal;
+export default React.memo(ProdModal);
