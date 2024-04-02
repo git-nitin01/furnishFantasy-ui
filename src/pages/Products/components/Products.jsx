@@ -13,11 +13,11 @@ function Products({ products }) {
 
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+console.log('currentProducts', currentProducts)
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6">
             {currentProducts.map((product, index) => (
-                <Prod key={index} name={product.name} category={product.category} price={product.price} />
+                <Prod key={product.id} id={product.id} name={product.name} category={product.category} price={product.price} img={product.img} />
             ))}
             {/* Second Row */}
             {products.length > productsPerPage && (

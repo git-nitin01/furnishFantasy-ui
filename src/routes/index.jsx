@@ -7,6 +7,7 @@ import {
 import { Suspense, lazy, useEffect } from "react";
 import Spinner from "../pages/Products/components/Spinner";
 import { useState } from "react";
+import { CartProvider } from "../Context/cartContext";
 
   const ProductPage = lazy(() => import("../pages/Products"));
   const Home = lazy(() => import("../pages/Home"));
@@ -45,6 +46,7 @@ import { useState } from "react";
           </Layout>
         }
       />
+      
         {/* Add other routes as needed */}
       </Routes>
     );
@@ -52,7 +54,9 @@ import { useState } from "react";
   const AppRouter = () => {
     return (
       <Router>
+         <CartProvider>
         <AppRoutes />
+      </CartProvider>
       </Router>
     );
   };

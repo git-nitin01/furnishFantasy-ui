@@ -1,13 +1,13 @@
-import './App.css';
-import AppRouter from './routes';
+import "./App.css";
+import AppRouter from "./routes";
 
 function App() {
+  console.log("App")
   return (
     <div>
-      <AppRouter />
+        <AppRouter />
     </div>
   );
 }
 
 export default App;
-
