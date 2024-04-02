@@ -1,29 +1,35 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../../../Context/cartContext';
+import React, { useContext, useState } from "react";
+import { CartContext } from "../../../Context/cartContext";
+import ProdModal from './ProdModal' 
 
-const Prod = ({ id, name, category, price, img }) => {
+const Prod = ({ id, name, category, price, img, des }) => {
+  const [prodModal, setProdModal] = useState(false);
   const { dispatch, state } = useContext(CartContext);
-console.log("state", state)
+
+  const handleProdModal = () => {
+    setProdModal(!prodModal);
+  };
+
   const handleAddToCart = () => {
     dispatch({
-      type: 'ADD_PRODUCTS',
+      type: "ADD_PRODUCTS",
       payload: {
         id,
         name,
         category,
         price,
         img,
-        quantity: 1, 
+        quantity: 1,
       },
     });
   };
 
   return (
     <div className="w-full sm:w-64 bg-white rounded-lg shadow-md">
-      <div className="text-center mb-2">
+      <div onClick={handleProdModal} className="text-center mb-2">
         <img src={img} alt="product" className="mx-auto" />
       </div>
-      <div className="text-center mb-2">
+      <div onClick={handleProdModal} className="text-center mb-2">
         <h2 className="text-lg font-bold">{name}</h2>
         <p className="text-sm text-gray-600">{category}</p>
         <p className="text-lg font-bold">${price}</p>
@@ -36,9 +42,19 @@ console.log("state", state)
           Add to Cart
         </button>
       </div>
+      {prodModal && (
+        <ProdModal
+          name={name}
+          category={category}
+          price={price}
+          modal={prodModal}
+          description={des}
+          id={id}
+          img={img}
+        />
+      )}
     </div>
   );
-}
+};
 
-// Memoize the component
 export default React.memo(Prod);

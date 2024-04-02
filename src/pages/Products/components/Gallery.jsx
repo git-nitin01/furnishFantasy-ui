@@ -11,6 +11,7 @@ function Gallery() {
       category: "Electronics",
       price: 30,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product 1",
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ function Gallery() {
       category: "Clothing",
       price: 20,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product 2",
     },
     {
       id: 3,
@@ -25,6 +27,7 @@ function Gallery() {
       category: "Books",
       price: 40,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product 3",
     },
     {
       id: 4,
@@ -32,6 +35,7 @@ function Gallery() {
       category: "Electronics",
       price: 50,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 5,
@@ -39,6 +43,7 @@ function Gallery() {
       category: "Electronics",
       price: 30,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 6,
@@ -46,6 +51,7 @@ function Gallery() {
       category: "Clothing",
       price: 20,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 7,
@@ -53,6 +59,7 @@ function Gallery() {
       category: "Books",
       price: 40,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 8,
@@ -60,6 +67,7 @@ function Gallery() {
       category: "Electronics",
       price: 30,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 9,
@@ -67,6 +75,7 @@ function Gallery() {
       category: "Clothing",
       price: 20,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 10,
@@ -74,6 +83,7 @@ function Gallery() {
       category: "Books",
       price: 40,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 11,
@@ -81,6 +91,7 @@ function Gallery() {
       category: "Electronics",
       price: 50,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 12,
@@ -88,6 +99,7 @@ function Gallery() {
       category: "Electronics",
       price: 30,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 13,
@@ -95,6 +107,7 @@ function Gallery() {
       category: "Clothing",
       price: 20,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 14,
@@ -102,6 +115,7 @@ function Gallery() {
       category: "Books",
       price: 40,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 15,
@@ -109,6 +123,7 @@ function Gallery() {
       category: "Electronics",
       price: 30,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 16,
@@ -116,6 +131,7 @@ function Gallery() {
       category: "Clothing",
       price: 20,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
     {
       id: 17,
@@ -123,6 +139,7 @@ function Gallery() {
       category: "Books",
       price: 40,
       img: "src/assets/image.png",
+      des: "This is a product description from the backend API response for product",
     },
   ];
 
@@ -139,7 +156,7 @@ function Gallery() {
   };
 
   const categories = [...new Set(products.map((product) => product.category))];
-console.log("here in the gallery")
+  console.log("here in the gallery");
   return (
     <main className="mt-10 px-8 bg-[#EEEEEE]">
       <div className="py-10 mx-auto">

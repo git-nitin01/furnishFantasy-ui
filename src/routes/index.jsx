@@ -18,7 +18,7 @@ import { CartProvider } from "../Context/cartContext";
     useEffect(() => {
       const timeout = setTimeout(() => {
         setIsLoading(false);
-      }, 2400);
+      }, 1400);
 
       return () => clearTimeout(timeout);
     }, []);
