@@ -253,7 +253,8 @@ const CheckoutPage = () => {
                         <div className="flex flex-1 flex-col">
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href={product.href}>{product.name}</a>
+                              <p className="text-base">{product.name}</p>
+                              <p className="text-sm">Quantity: {product.quantity}</p>
                             </h3>
                             <p className="ml-4">${product.price * product.quantity}</p>
                           </div>
