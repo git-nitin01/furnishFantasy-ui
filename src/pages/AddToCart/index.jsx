@@ -142,13 +142,15 @@ const AddToCart = () => {
                 <p className="mt-0.5 text-sm text-gray-500">
                   Shipping and taxes calculated at checkout.
                 </p>
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 transition duration-300"
-                  >
-                    Place Order
-                  </button>
+                <div className="mt-6 justify-center flex">
+                  <a href="/checkout">
+                    <button
+                      type="submit"
+                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 transition duration-300"
+                    >
+                      Checkout
+                    </button>
+                  </a>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>
