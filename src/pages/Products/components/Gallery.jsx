@@ -2,6 +2,7 @@
 import React from "react";
 import Filters from "./Filters";
 import Products from "./Products";
+import { useState } from "react";
 
 function Gallery() {
   const products = [
@@ -143,16 +144,54 @@ function Gallery() {
     },
   ];
 
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
   const filterProducts = (category) => {
-    console.log("Category:", category);
+    // Filter products by category
+    if (category === "All") {
+      setFilteredProducts(products);
+    } else {
+      const filteredProducts = products.filter((product) => product.category === category);
+      setFilteredProducts(filteredProducts);
+    }
   };
 
   const filterProductsByPrice = (price) => {
-    console.log("Price Range:", price);
+    // Filter products by price
+    const filteredProducts = products.filter((product) => {
+      if (price === "0-25") {
+        return product.price >= 0 && product.price <= 25;
+      } else if (price === "25-50") {
+        return product.price >= 25 && product.price <= 50;
+      } else if (price === "50-100") {
+        return product.price >= 50 && product.price <= 100;
+      } else {
+        return product.price > 100;
+      }
+    });
+    setFilteredProducts(filteredProducts);
   };
 
   const sortProducts = (sort) => {
-    console.log("Sort By:", sort);
+    // Sort products by price
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (sort === "price-asc") {
+        // Sort by price ascending
+        return a.price - b.price;
+      } else if (sort === "price-desc") {
+        // Sort by price descending
+        return b.price - a.price; 
+      } else if (sort === "name-asc") {
+        // Sort by name ascending
+        return a.name.localeCompare(b.name);
+      } else if (sort === "name-desc") {
+        // Sort by name descending
+        return b.name.localeCompare(a.name);
+      } else {
+        return 0;
+      }
+    });
+    setFilteredProducts(sortedProducts);
   };
 
   const categories = [...new Set(products.map((product) => product.category))];
@@ -168,7 +207,7 @@ function Gallery() {
             onPriceChange={filterProductsByPrice}
             onSortChange={sortProducts}
           />
-          <Products products={products} />
+          <Products products={filteredProducts} />
         </div>
       </div>
     </main>
