@@ -37,16 +37,16 @@ const FeaturedSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
         {/* Each item */}
         {[
-          { imageUrl: "images/images1.jpg", title: "Full Furnish Furniture", price:1999 },
-          { imageUrl: "images/images2.jpg", title: "Sofa Set", price: 999 },
-          { imageUrl: "images/images3.jpg", title: "Table Chair", price: 499 },
-          { imageUrl: "images/images4.jpg", title: "Cupboard", price: 199 },
-          { imageUrl: "images/image5.jpg", title: "Another Furniture", price: 299 },
-          { imageUrl: "images/images1.jpg", title: "Full Furnish Furniture", price: 1999 },
-          { imageUrl: "images/images2.jpg", title: "Sofa Set", price: 999 },
-          { imageUrl: "images/images3.jpg", title: "Table Chair", price: 499 },
-          { imageUrl: "images/images4.jpg", title: "Cupboard", price: 199 },
-          { imageUrl: "images/image5.jpg", title: "Another Furniture", price: 299 },
+          { imageUrl: "/images/images1.jpg", title: "Full Furnish Furniture", price:1999 },
+          { imageUrl: "/images/images2.jpg", title: "Sofa Set", price: 999 },
+          { imageUrl: "/images/images3.jpg", title: "Table Chair", price: 499 },
+          { imageUrl: "/images/images4.jpg", title: "Cupboard", price: 199 },
+          { imageUrl: "/images/image5.jpg", title: "Another Furniture", price: 299 },
+          { imageUrl: "/images/images1.jpg", title: "Full Furnish Furniture", price: 1999 },
+          { imageUrl: "/images/images2.jpg", title: "Sofa Set", price: 999 },
+          { imageUrl: "/images/images3.jpg", title: "Table Chair", price: 499 },
+          { imageUrl: "/images/images4.jpg", title: "Cupboard", price: 199 },
+          { imageUrl: "/images/image5.jpg", title: "Another Furniture", price: 299 },
         ].map((item, index) => (
           <div key={index} className="relative overflow-hidden">
             <a href={dashboardUrl} className="block relative rounded-xl h-48 overflow-hidden">

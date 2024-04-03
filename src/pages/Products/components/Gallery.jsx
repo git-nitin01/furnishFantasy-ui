@@ -11,7 +11,7 @@ function Gallery() {
       name: "Product 1",
       category: "Electronics",
       price: 30,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product 1",
     },
     {
@@ -19,7 +19,7 @@ function Gallery() {
       name: "Product 2",
       category: "Clothing",
       price: 20,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product 2",
     },
     {
@@ -27,7 +27,7 @@ function Gallery() {
       name: "Product 3",
       category: "Books",
       price: 40,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product 3",
     },
     {
@@ -35,7 +35,7 @@ function Gallery() {
       name: "Product 4",
       category: "Electronics",
       price: 50,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -43,7 +43,7 @@ function Gallery() {
       name: "Product 1",
       category: "Electronics",
       price: 30,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -51,7 +51,7 @@ function Gallery() {
       name: "Product 2",
       category: "Clothing",
       price: 20,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -59,7 +59,7 @@ function Gallery() {
       name: "Product 3",
       category: "Books",
       price: 40,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -67,7 +67,7 @@ function Gallery() {
       name: "Product 1",
       category: "Electronics",
       price: 30,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -75,7 +75,7 @@ function Gallery() {
       name: "Product 2",
       category: "Clothing",
       price: 20,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -83,7 +83,7 @@ function Gallery() {
       name: "Product 3",
       category: "Books",
       price: 40,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -91,7 +91,7 @@ function Gallery() {
       name: "Product 4",
       category: "Electronics",
       price: 50,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -99,7 +99,7 @@ function Gallery() {
       name: "Product 1",
       category: "Electronics",
       price: 30,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -107,7 +107,7 @@ function Gallery() {
       name: "Product 2",
       category: "Clothing",
       price: 20,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -115,7 +115,7 @@ function Gallery() {
       name: "Product 3",
       category: "Books",
       price: 40,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -123,7 +123,7 @@ function Gallery() {
       name: "Product 1",
       category: "Electronics",
       price: 30,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -131,7 +131,7 @@ function Gallery() {
       name: "Product 2",
       category: "Clothing",
       price: 20,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
     {
@@ -139,7 +139,7 @@ function Gallery() {
       name: "Product 3",
       category: "Books",
       price: 40,
-      img: "src/assets/image.png",
+      img: "/images/image.png",
       des: "This is a product description from the backend API response for product",
     },
   ];

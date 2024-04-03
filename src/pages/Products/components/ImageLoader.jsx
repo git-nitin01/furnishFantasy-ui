@@ -12,7 +12,7 @@ const ImageLoader = () => {
 
   return (
     <img
-        src={`src/assets/loader/image-${currentImage}.png`}
+        src={`/images/image-${currentImage}.png`}
         alt="Loading..."
         className="inline z-1 h-20 w-20 ml-[-5.85rem]"
       />
