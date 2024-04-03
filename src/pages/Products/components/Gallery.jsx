@@ -148,7 +148,7 @@ function Gallery() {
 
   const filterProducts = (category) => {
     // Filter products by category
-    if (category === "All") {
+    if (category === "") {
       setFilteredProducts(products);
     } else {
       const filteredProducts = products.filter((product) => product.category === category);
@@ -165,8 +165,10 @@ function Gallery() {
         return product.price >= 25 && product.price <= 50;
       } else if (price === "50-100") {
         return product.price >= 50 && product.price <= 100;
-      } else {
+      } else if (price === "100+"){
         return product.price > 100;
+      } else {
+        return product;
       }
     });
     setFilteredProducts(filteredProducts);
@@ -188,7 +190,8 @@ function Gallery() {
         // Sort by name descending
         return b.name.localeCompare(a.name);
       } else {
-        return 0;
+        // return default
+        return a.id - b.id;
       }
     });
     setFilteredProducts(sortedProducts);
