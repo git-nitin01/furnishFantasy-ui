@@ -26,7 +26,7 @@ const Prod = ({ id, name, category, price, img, des }) => {
 
   return (
     <div className="w-full sm:w-64 bg-white rounded-lg shadow-md">
-      <div onClick={handleProdModal} className="text-center mb-2">
+      <div onClick={handleProdModal} className="cursor-pointer text-center mb-2">
         <img src={img} alt="product" className="mx-auto" />
       </div>
       <div onClick={handleProdModal} className="text-center mb-2">
