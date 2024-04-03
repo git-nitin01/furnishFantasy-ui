@@ -8,6 +8,7 @@ import { Suspense, lazy, useEffect } from "react";
 import Spinner from "../pages/Products/components/Spinner";
 import { useState } from "react";
 import { CartProvider } from "../Context/cartContext";
+import CheckoutPage from "../pages/Checkout";
 
   const ProductPage = lazy(() => import("../pages/Products"));
   const Home = lazy(() => import("../pages/Home"));
@@ -47,7 +48,16 @@ import { CartProvider } from "../Context/cartContext";
             </Suspense> 
         }
       />
-      
+      <Route
+        path="/checkout"
+        element={
+          <Layout>
+            {isLoading ? <Spinner /> : <Suspense fallback={<Spinner/>}>
+              <CheckoutPage />
+            </Suspense> }
+          </Layout>
+        }
+      />
         {/* Add other routes as needed */}
       </Routes>
     );
