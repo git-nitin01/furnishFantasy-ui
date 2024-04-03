@@ -93,7 +93,7 @@ console.log("modal", modal, isModal)
     });
   });
 
-  const hoverTransition = "transition duration-300 ease-in-out";
+  const hoverTransition = "transition duration-300 linear";
   return ReactDOM.createPortal(
     <CartContext.Consumer>
       {({ dispatch }) => (
