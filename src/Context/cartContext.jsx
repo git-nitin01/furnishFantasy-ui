@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from "react";
+import React, { createContext, useReducer, useState, useEffect } from "react";
 
 const initialState = {
   products: [],
@@ -10,6 +10,8 @@ export const CartContext = createContext(initialState);
 
 const cartReducer = (state, action) => {
   switch (action.type) {
+    case "LOAD_CART_STATE":
+      return action.payload;
     case "ADD_PRODUCTS":
       const existingProductIndex = state.products.findIndex(
         (item) => item.id === action.payload.id
@@ -98,6 +100,17 @@ const cartReducer = (state, action) => {
 export const CartProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    const savedCartState = localStorage.getItem("cartState");
+    if (savedCartState) {
+      dispatch({ type: "LOAD_CART_STATE", payload: JSON.parse(savedCartState) });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartState", JSON.stringify(state));
+  }, [state]);
 
   return (
     <CartContext.Provider value={{ state, dispatch, open, setOpen }}>
