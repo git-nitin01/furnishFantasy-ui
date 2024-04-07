@@ -5,13 +5,14 @@ import Spinner from "../pages/Products/components/Spinner";
 import { useState } from "react";
 import { CartProvider } from "../Context/cartContext";
 import CheckoutPage from "../pages/Checkout";
+import PrivateLayout from "../components/PrivateLayout";
 
 const ProductPage = lazy(() => import("../pages/Products"));
 const Home = lazy(() => import("../pages/Home"));
+const AdminCategoryPage = lazy(() => import("../pages/Admin"))
 
 const AppRoutes = () => {
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
@@ -65,6 +66,26 @@ const AppRoutes = () => {
           </Layout>
         }
       />
+    
+      <Route
+        path="/admin/categoryPage"
+        element={
+          <PrivateLayout>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <Suspense fallback={<Spinner />}>
+                <AdminCategoryPage />
+              </Suspense>
+            )}
+          </PrivateLayout>
+        }
+      />
+        {/* <Route path="/categories" component={CategoryPage} />
+        <Route path="/products" component={ProductPage} />
+        <Route path="/orders" component={OrderPage} /> */}
+     
+   
       {/* Add other routes as needed */}
     </Routes>
   );

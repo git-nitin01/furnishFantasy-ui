@@ -16,7 +16,6 @@ const cartReducer = (state, action) => {
       const existingProductIndex = state.products.findIndex(
         (item) => item.id === action.payload.id
       );
-      console.log("state.quantity", existingProductIndex);
 
       if (existingProductIndex === -1) {
         return {
