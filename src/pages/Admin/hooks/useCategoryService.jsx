@@ -4,7 +4,7 @@ const useCategoryService = () => {
   const getCategory = async () => {
     try {
       const response = await httpService.get("/category/getCategory");
-      return response.data;
+      return response.data.data;
     } catch (error) {
       throw new Error("Error fetching categories:", error);
     }

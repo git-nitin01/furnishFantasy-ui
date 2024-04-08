@@ -9,7 +9,7 @@ import PrivateLayout from "../components/PrivateLayout";
 
 const ProductPage = lazy(() => import("../pages/Products"));
 const Home = lazy(() => import("../pages/Home"));
-const AdminCategoryPage = lazy(() => import("../pages/Admin"))
+const AdminCategoryPage = lazy(() => import("../pages/Admin/CategoryPage"))
 
 const AppRoutes = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,9 +74,7 @@ const AppRoutes = () => {
             {isLoading ? (
               <Spinner />
             ) : (
-              <Suspense fallback={<Spinner />}>
-                <AdminCategoryPage />
-              </Suspense>
+              <AdminCategoryPage />
             )}
           </PrivateLayout>
         }
