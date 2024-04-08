@@ -26,7 +26,19 @@ const useCategoryService = () => {
     }
   };
 
-  return { getCategory, addCategory, deleteCategory };
+  const editCategory = async (categoryId, formData) => {
+    try {
+      const data = await httpService.put(`/category/updateCategory/${categoryId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return data
+    } catch (error) {
+      throw new Error("Error editing category:", error);
+    }
+  };
+  return { getCategory, addCategory, deleteCategory, editCategory };
 };
 
 export default useCategoryService;

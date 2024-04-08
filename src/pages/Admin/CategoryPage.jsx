@@ -4,7 +4,8 @@ import useCategoryService from "./hooks/useCategoryService";
 import Modal from "./components/Modal";
 
 const AdminCategoryPage = () => {
-  const { getCategory, addCategory, deleteCategory } = useCategoryService();
+  const { getCategory, addCategory, deleteCategory, editCategory } =
+    useCategoryService();
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState({
     catName: "",
@@ -67,9 +68,24 @@ const AdminCategoryPage = () => {
     setUploadedImageUrl(null); // Clear uploaded image URL
   };
 
-  const handleEditModal = () => {
+  const handleEditModal = async () => {
     // Handle edit action, e.g., make a call to backend
-    console.log("Edit action triggered");
+    const { catDescription, catImg, catName, catID } = modalCategory;
+    const formData = new FormData();
+    formData.append("file", catImg); 
+    formData.append(
+      "category",
+      JSON.stringify({
+        catName,
+        catDescription
+      })
+    );
+    await editCategory(catID, formData);
+
+    setIsModalOpen(false);
+    setSelectedCategory(null);
+    setModalCategory({ catName: "", catDescription: "", catImg: null });
+    setUploadedImageUrl(null); // Clear uploaded image URL
     setIsModalOpen(false);
   };
 
@@ -90,10 +106,10 @@ const AdminCategoryPage = () => {
       reader.readAsDataURL(file);
     }
   };
-  console.log("selectedCategory", selectedCategory)
+  console.log("selectedCategory", selectedCategory);
 
   return (
-    <div className="container mx-auto py-8 px-4 bg-white">
+    <div className="container h-full mx-auto py-8 px-4 bg-white">
       <h1 className="text-2xl font-bold mb-8">Admin Category Page</h1>
       <form onSubmit={handleAddCategory} className="mb-8">
         <div className="flex items-center mb-4">
@@ -102,7 +118,9 @@ const AdminCategoryPage = () => {
             name="catName"
             placeholder="Enter category name"
             value={newCategory.catName}
-            onChange={(e) => setNewCategory({ ...newCategory, catName: e.target.value })}
+            onChange={(e) =>
+              setNewCategory({ ...newCategory, catName: e.target.value })
+            }
             className="w-1/2 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500"
           />
           <input
@@ -110,7 +128,9 @@ const AdminCategoryPage = () => {
             name="catDescription"
             placeholder="Enter category description"
             value={newCategory.catDescription}
-            onChange={(e) => setNewCategory({ ...newCategory, catDescription: e.target.value })}
+            onChange={(e) =>
+              setNewCategory({ ...newCategory, catDescription: e.target.value })
+            }
             className="ml-4 w-1/2 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500"
           />
         </div>
@@ -172,7 +192,12 @@ const AdminCategoryPage = () => {
         {selectedCategory && (
           <>
             <div className="mb-4">
-              <label htmlFor="catName" className="block text-sm font-medium text-gray-700">Name</label>
+              <label
+                htmlFor="catName"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name
+              </label>
               <input
                 id="catName"
                 type="text"
@@ -183,7 +208,12 @@ const AdminCategoryPage = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="catDescription" className="block text-sm font-medium text-gray-700">Description</label>
+              <label
+                htmlFor="catDescription"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Description
+              </label>
               <textarea
                 id="catDescription"
                 name="catDescription"
@@ -192,18 +222,32 @@ const AdminCategoryPage = () => {
                 className="mt-1 p-2 border bg-white border-gray-300 rounded-md w-full h-24 resize-none focus:outline-none"
               />
             </div>
-           
-              <>
-                <label htmlFor="uploadedImage" className="block text-sm font-medium text-gray-700">{uploadedImageUrl ? "Uploaded Image" : "Image"}</label>
-                <img
-                  src={uploadedImageUrl || `data:image/png;base64, ${selectedCategory.catImg}`}
-                  alt="Uploaded Image"
-                  className="mt-2 w-full h-44 object-contain rounded-md"
-                />
-              </>
-           
+
+            <>
+              <label
+                htmlFor="uploadedImage"
+                className="block text-sm font-medium text-gray-700"
+              >
+                {uploadedImageUrl ? "Uploaded Image" : "Image"}
+              </label>
+              <img
+                src={
+                  uploadedImageUrl ||
+                  `data:image/png;base64, ${selectedCategory.catImg}`
+                }
+                alt="Uploaded Image"
+                className="mt-2 w-full h-44 object-contain rounded-md"
+              />
+            </>
+
             <div className="my-4">
-              <label htmlFor="catImg" className="block text-sm font-medium text-gray-700"> Upload Image</label>
+              <label
+                htmlFor="catImg"
+                className="block text-sm font-medium text-gray-700"
+              >
+                {" "}
+                Upload Image
+              </label>
               <input
                 id="catImg"
                 type="file"

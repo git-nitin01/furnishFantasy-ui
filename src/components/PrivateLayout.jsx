@@ -12,7 +12,7 @@ console.log("here inside header")
         <main className="mt-14 flex">
           <>
            <Sidebar />
-            {children}
+            <main className="w-full my-8">{children}</main>
           </>
         </main>
       ) : (
