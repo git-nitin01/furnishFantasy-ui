@@ -109,7 +109,7 @@ const AdminCategoryPage = () => {
   console.log("selectedCategory", selectedCategory);
 
   return (
-    <div className="container h-full mx-auto py-8 px-4 bg-white">
+    <div className="container rounded-lg h-full mx-auto py-8 px-4 bg-white">
       <h1 className="text-2xl font-bold mb-8">Admin Category Page</h1>
       <form onSubmit={handleAddCategory} className="mb-8">
         <div className="flex items-center mb-4">
