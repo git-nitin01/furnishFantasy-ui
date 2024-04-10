@@ -102,7 +102,7 @@ console.log("modal", modal, isModal)
             <div className="bg-white flex flex-row w-screen h-screen shadow-3xl">
               <div className="flex justify-center max-w-[50%]">
                 <img
-                  src="/images/image.png"
+                  src={img}
                   alt="product"
                   className="object-fill"
                 />

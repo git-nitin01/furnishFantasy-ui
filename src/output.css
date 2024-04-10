@@ -815,6 +815,14 @@ video {
   height: 16rem;
 }
 
+.h-\[2\.5em\] {
+  height: 2.5em;
+}
+
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-\[60vw\] {
   height: 60vw;
 }
@@ -824,6 +832,14 @@ video {
 }
 
 .h-screen {
+  height: 100vh;
+}
+
+.h-\[100w\] {
+  height: 100w;
+}
+
+.h-\[100vh\] {
   height: 100vh;
 }
 
@@ -855,6 +871,10 @@ video {
   width: 24rem;
 }
 
+.w-\[300px\] {
+  width: 300px;
+}
+
 .w-\[800px\] {
   width: 800px;
 }
@@ -869,6 +889,10 @@ video {
 }
 
 .w-screen {
+  width: 100vw;
+}
+
+.w-\[100vw\] {
   width: 100vw;
 }
 
@@ -1540,16 +1564,16 @@ video {
   transition-duration: 150ms;
 }
 
+.duration-200 {
+  transition-duration: 200ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
 
 .duration-500 {
   transition-duration: 500ms;
-}
-
-.duration-200 {
-  transition-duration: 200ms;
 }
 
 .ease-in-out {
@@ -1706,6 +1730,11 @@ button:focus-visible {
   width: 100%;
 }
 
+.before\:left-\[0\]::before {
+  content: var(--tw-content);
+  left: 0;
+}
+
 .before\:text-green-500::before {
   content: var(--tw-content);
   --tw-text-opacity: 1;
@@ -1720,12 +1749,6 @@ button:focus-visible {
 
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.hover\:scale-110:hover {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

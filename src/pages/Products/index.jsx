@@ -1,10 +1,10 @@
 import React from 'react'
 import Gallery from './components/Gallery'
 
-function ProductPage() {
+function ProductPage({products}) {
   return (
     <>
-        <Gallery />
+        <Gallery products={products}/>
     </>
   )
 }

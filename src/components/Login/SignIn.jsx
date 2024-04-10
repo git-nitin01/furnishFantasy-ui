@@ -19,14 +19,15 @@ function SignIn({isClicked}) {
   })
   }, [isClicked])
 
+  
   return (
       <div id='top-container-0' className='formContainer sm:scale-100 scale-[0.75]'>
         <div id="sign_in_form" className={toRight}>
-          <form className="innerForm">
-            <input type="email" placeholder="Email" className='inpField' required/>
-            <input type="password" placeholder="Password" className='inpField' required/>
-            <button className="clickBtn">Sign In</button>
-          </form>
+          <fieldset className="innerForm">
+            <input id="sign-in-email" type="email" placeholder="Email" className='inpField' required/>
+            <input id="sign-in-pass" type="password" placeholder="Password" className='inpField' required/>
+            <button id="inner-sign-in" className="clickBtn">Sign In</button>
+          </fieldset>
         </div>
       </div>
   )

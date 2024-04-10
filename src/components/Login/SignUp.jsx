@@ -40,7 +40,7 @@ function SignUp({isClicked}) {
       <div id="top-container-1" className='formContainer sm:scale-100 scale-[0.50]'>
         <div id="sign_up_form" className={toRight}>
           <form id="inner-sign-up" className="innerForm" data-content=''>
-            <input type="text" placeholder="Name" className='inpField' required/>
+            <input type="text" id="user" placeholder="Name" className='inpField' required/>
             <input id="email" type="email" placeholder="Email" className='inpField' required/>
             <input id="reEmail" type="email" placeholder="Retype mail" className='inpField' required/>
             <input id="pass" type="password" placeholder="Password" className='inpField' required/>

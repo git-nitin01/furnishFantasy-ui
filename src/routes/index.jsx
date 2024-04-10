@@ -1,8 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "../components/layout";
-import { Suspense, lazy, useEffect } from "react";
-import Spinner from "../pages/Products/components/Spinner";
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState} from "react";
 import { CartProvider } from "../Context/cartContext";
 import CheckoutPage from "../pages/Checkout";
 import PrivateLayout from "../components/PrivateLayout";
@@ -11,15 +9,19 @@ const ProductPage = lazy(() => import("../pages/Products"));
 const Home = lazy(() => import("../pages/Home"));
 const AdminCategoryPage = lazy(() => import("../pages/Admin/CategoryPage"))
 
-const AppRoutes = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1400);
+  const AppRoutes = () => {
+    const {data} = useContext(DataContext);
+    
+    const wait = useRef(true);
+    const dataRef = useRef();
 
-    return () => clearTimeout(timeout);
-  }, []);
+    useEffect(() => {
+      if(data.products.length > 0 && data.categories.length > 0 && data.clearance.length > 0){
+        console.log("Data fetched");
+        dataRef.current = data;
+        wait.current = false;
+      }
+    }, [data]);
 
   console.log("Inside Routes");
   return (
@@ -32,65 +34,26 @@ const AppRoutes = () => {
           ) : (
             <Suspense fallback={<Spinner />}>
               <Layout>
-                <Home />
+                <Home categories={dataRef.categories} clearance={dataRef.clearance}/>
               </Layout>
-            </Suspense>
-          )
-        }
-      />
-      <Route
-        path="/gallery"
-        element={
-          isLoading ? (
-            <Spinner />
-          ) : (
-            <Suspense fallback={<Spinner />}>
+            }
+          />
+            <Route
+            path="/gallery"
+            element={
               <Layout>
-                <ProductPage />
+                <ProductPage products={dataRef.products}/>
               </Layout>
-            </Suspense>
-          )
-        }
-      />
-      <Route
-        path="/checkout"
-        element={
-          <Layout>
-            {isLoading ? (
-              <Spinner />
-            ) : (
-              <Suspense fallback={<Spinner />}>
-                <CheckoutPage />
-              </Suspense>
-            )}
-          </Layout>
-        }
-      />
-    
-      <Route
-        path="/admin/categoryPage"
-        element={
-          <PrivateLayout>
-            {isLoading ? (
-              <Spinner />
-            ) : (
-              <AdminCategoryPage />
-            )}
-          </PrivateLayout>
-        }
-      />
-        {/* <Route path="/categories" component={CategoryPage} />
-        <Route path="/products" component={ProductPage} />
-        <Route path="/orders" component={OrderPage} /> */}
-     
-   
-      {/* Add other routes as needed */}
-    </Routes>
-  );
-};
-const AppRouter = () => {
-  return (
-    <CartProvider>
+            }
+          />
+          
+            {/* Add other routes as needed */}
+          </Routes>
+        )
+    );
+  };
+  const AppRouter = () => {
+    return (
       <Router>
         <AppRoutes />
       </Router>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../../Context/cartContext";
 import ProdModal from './ProdModal' 
 
-const Prod = ({ id, name, category, price, img, des }) => {
+const Prod = ({ id, name, caption, category, price, img, des }) => {
   const [prodModal, setProdModal] = useState(false);
   const { dispatch, state } = useContext(CartContext);
 
@@ -27,11 +27,11 @@ const Prod = ({ id, name, category, price, img, des }) => {
   return (
     <div className="w-full sm:w-64 bg-white rounded-lg shadow-md">
       <div onClick={handleProdModal} className="cursor-pointer text-center mb-2 overflow-hidden">
-        <img src={img} alt="product" className="mx-auto hover:scale-125 hover:transition duration-200 linear" />
+        <img src={img} alt="product" className="w-[300px] h-[200px] rounded-t-lg mx-auto hover:scale-125 hover:transition duration-200 linear overflow-hidden" />
       </div>
       <div onClick={handleProdModal} className="text-center mb-2">
         <h2 className="text-lg font-bold">{name}</h2>
-        <p className="text-sm text-gray-600">{category}</p>
+        <p className="text-sm text-gray-600 h-[2.5em]">{caption}</p>
         <p className="text-lg font-bold">${price}</p>
       </div>
       <div className="text-center mb-2">

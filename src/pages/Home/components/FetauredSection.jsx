@@ -1,11 +1,10 @@
 import $ from 'jquery';
 
-const FeaturedSection = () => {
-  const dashboardUrl = "/dashboard"; // Replace this with the actual URL of your dashboard
+const FeaturedSection = ({clearance}) => {
 
   // Function to calculate the discounted price
-  const calculateDiscountedPrice = (price) => {
-    return price * 0.5; // 50% discount
+  const calculateDiscountedPrice = (price, discount) => {
+    return price * (discount / 100); // 50% discount
   };
 
   // Apply styles using jQuery
@@ -35,26 +34,14 @@ const FeaturedSection = () => {
        <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-        {/* Each item */}
-        {[
-          { imageUrl: "/images/images1.jpg", title: "Full Furnish Furniture", price:1999 },
-          { imageUrl: "/images/images2.jpg", title: "Sofa Set", price: 999 },
-          { imageUrl: "/images/images3.jpg", title: "Table Chair", price: 499 },
-          { imageUrl: "/images/images4.jpg", title: "Cupboard", price: 199 },
-          { imageUrl: "/images/image5.jpg", title: "Another Furniture", price: 299 },
-          { imageUrl: "/images/images1.jpg", title: "Full Furnish Furniture", price: 1999 },
-          { imageUrl: "/images/images2.jpg", title: "Sofa Set", price: 999 },
-          { imageUrl: "/images/images3.jpg", title: "Table Chair", price: 499 },
-          { imageUrl: "/images/images4.jpg", title: "Cupboard", price: 199 },
-          { imageUrl: "/images/image5.jpg", title: "Another Furniture", price: 299 },
-        ].map((item, index) => (
+        {clearance.map((item, index) => (
           <div key={index} className="relative overflow-hidden">
-            <a href={dashboardUrl} className="block relative rounded-xl h-48 overflow-hidden">
-              <img src={item.imageUrl} alt={`Photo ${index + 1}`} className="photo object-cover w-full h-full" />
+            <a className="block relative rounded-xl h-48 overflow-hidden">
+              <img src={item.image} alt={`Photo ${index + 1}`} className="photo object-cover w-full h-full" />
               {/* Displaying prices */}
               <div className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 text-xs font-bold rounded">
                 <span className="line-through text-gray-100 mr-2">${item.price}</span> {/* Old price */}
-                ${calculateDiscountedPrice(item.price)} {/* Discounted price */}
+                ${calculateDiscountedPrice(item.price, item.discount)} {/* Discounted price */}
               </div>
               {/* Limited Offer label */}
               <p className="absolute top-0 left-0 bg-yellow-500 text-white px-2 py-1 text-xs font-bold">Limited Offer 50% off</p>
