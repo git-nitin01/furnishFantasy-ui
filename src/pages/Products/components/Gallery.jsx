@@ -2,10 +2,10 @@
 import React from "react";
 import Filters from "./Filters";
 import Products from "./Products";
-import { useState, useEffect } from "react";
-import Spinner from "./Spinner";
+import { useState } from "react";
+import ComponentLoader from "../../Home/components/ComponentLoader";
 
-function Gallery({ products }) {
+function Gallery({ products, categories, defaultCat}) {
   
   const [filteredProducts, setFilteredProducts] = useState(products);
 
@@ -60,20 +60,24 @@ function Gallery({ products }) {
     setFilteredProducts(sortedProducts);
   };
 
-  const categories = [...new Set(products.map((product) => product.category))];
+  const catList = categories.map((category) => category.id);
+
   console.log("here in the gallery");
+  console.log(categories);
+  console.log(catList)
   return (
     <main className="mt-10 px-8 bg-[#EEEEEE]">
     <div className="py-10 mx-auto">
       <h1 className="text-4xl font-bold text-center mb-8">Product Gallery</h1>
       {
-        (filteredProducts.length === 0) ? <Spinner /> : (
+        (filteredProducts.length === 0) ? <ComponentLoader />: (
           <div className="flex flex-col lg:flex-row justify-center items-start">
             <Filters
-              categories={categories}
+              categories={catList}
               onCategoryChange={filterProducts}
               onPriceChange={filterProductsByPrice}
               onSortChange={sortProducts}
+              defaultCat={defaultCat}
             />
             <Products products={filteredProducts} />
         </div>

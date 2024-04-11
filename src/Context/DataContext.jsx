@@ -7,14 +7,12 @@ export const DataProvider = ({ children }) => {
     const[products, setProducts] = useState([]);
     const[categories, setCategories] = useState([]);
     const[clearance, setClearance] = useState([]);
-
-    const IP = '10.4.2.233'
     
     useEffect(() => {
         // fetching products
         axios({
             method: 'get',
-            url: `http://${IP}:8080/furnishFantasy/product/getProduct`,
+            url: `https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/product/getProduct`,
           })
             .then(function (response) {
               // handle success
@@ -45,11 +43,11 @@ export const DataProvider = ({ children }) => {
         // fetching categories
         axios({
         method: 'get',
-        url: `http://${IP}:8080/furnishFantasy/category/getCategory`,
+        url: `https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/category/getCategory`,
         }).then(function (response) {
         console.log(response);
         const fetchedCategories = response.data.data.map(category => ({
-            id: category.catId,
+            id: category.categoryId,
             title: category.catName,
             description: category.catDescription,
             image: `data:image/png;base64,${category.catImg}`

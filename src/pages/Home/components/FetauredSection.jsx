@@ -1,11 +1,51 @@
 import $ from 'jquery';
+import React, { useState } from "react";
+import ProdModal from '../../Products/components/ProdModal' 
+
+const Card = React.memo(({ item, index }) => {
+  const [cardModal, setCardModal] = useState(false);
+
+  const handleCardModal = () => {
+    setCardModal(!cardModal);
+  };
+
+
+  const calculateDiscountedPrice = (price, discount) => {
+    return price - price * (discount / 100);
+  }
+
+  return (
+    <>
+      <div key={index} className="relative overflow-hidden">
+        <a onClick={handleCardModal} className="cursor-pointer block relative rounded-xl h-48 overflow-hidden">
+          <img src={item.image} alt={`Photo ${index + 1}`} className="photo object-cover w-full h-full" />
+          {/* Displaying prices */}
+          <div className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 text-xs font-bold rounded">
+            <span className="line-through text-gray-100 mr-2">${item.price}</span> {/* Old price */}
+            ${calculateDiscountedPrice(item.price, item.discount)} {/* Discounted price */}
+          </div>
+          {/* Limited Offer label */}
+          <p className="absolute top-0 left-0 bg-yellow-500 text-white px-2 py-1 text-xs font-bold">Limited Offer 50% off</p>
+        </a>
+      </div>
+      
+        {cardModal && (
+          <ProdModal
+            name={item.name}
+            category={item.category}
+            price={item.price}
+            modal={cardModal}
+            description={item.description}
+            id={item.id}
+            img={item.image}
+          />
+        )}
+    </>
+  );
+});
+
 
 const FeaturedSection = ({clearance}) => {
-
-  // Function to calculate the discounted price
-  const calculateDiscountedPrice = (price, discount) => {
-    return price * (discount / 100); // 50% discount
-  };
 
   // Apply styles using jQuery
   $(document).ready(function() {
@@ -29,25 +69,13 @@ const FeaturedSection = ({clearance}) => {
     );
   });
 
+
   return (
     <main className="text-black">
        <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-        {clearance.map((item, index) => (
-          <div key={index} className="relative overflow-hidden">
-            <a className="block relative rounded-xl h-48 overflow-hidden">
-              <img src={item.image} alt={`Photo ${index + 1}`} className="photo object-cover w-full h-full" />
-              {/* Displaying prices */}
-              <div className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 text-xs font-bold rounded">
-                <span className="line-through text-gray-100 mr-2">${item.price}</span> {/* Old price */}
-                ${calculateDiscountedPrice(item.price, item.discount)} {/* Discounted price */}
-              </div>
-              {/* Limited Offer label */}
-              <p className="absolute top-0 left-0 bg-yellow-500 text-white px-2 py-1 text-xs font-bold">Limited Offer 50% off</p>
-            </a>
-          </div>
-        ))}
+        {clearance.map((item, index) => <Card item={item} index={index} />)}
       </div>
     </main>
   );

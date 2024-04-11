@@ -11,7 +11,7 @@ const Spinner = () => {
       }) 
     });
     return (
-      <div className="flex-block justify-center items-center">
+      <div className="h-screen flex justify-center items-center">
         <span id="load-spinner" className="z-2 inline-block rounded-full h-28 w-28 border-4  border-b-0 border-l-0  border-gray-900">
         </span>
         <ImageLoader />

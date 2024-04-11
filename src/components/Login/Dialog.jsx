@@ -44,7 +44,7 @@ const Dialog = ({setIsUser}) => {
             const password = $('#sign-in-pass').val();
             axios({
                 method: 'post',
-                url: 'http://10.4.3.58:8080/furnishFantasy/user/login',
+                url: 'https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/user/login',
                 data:
                 {
                     "custEmail": email,
@@ -114,7 +114,7 @@ const Dialog = ({setIsUser}) => {
             if (errorMessage.length === 0) {
                 axios({
                     method: 'post',
-                    url: 'http://10.4.3.58:8080/furnishFantasy/user/register',
+                    url: 'https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/user/register',
                     data: {
                         "custName": user,
                         "custEmail": email,

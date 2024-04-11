@@ -1,7 +1,15 @@
 // Filters.js
 import React from 'react';
+import { useEffect } from 'react';
 
-const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange }) => {
+const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange, defaultCat }) => {
+
+    useEffect(() => {
+        if (defaultCat) {
+            onCategoryChange(defaultCat);
+        }
+    }, []);
+
     const handleCategoryChange = (category) => {
         onCategoryChange(category);
     };
@@ -16,6 +24,8 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange }) 
 
     return (
         <div className="w-full lg:w-1/4 lg:mr-8 mb-8 lg:mb-0">
+            {console.log("here in the filters")}
+            {console.log(categories)}
             <div className="bg-white p-4 rounded-lg shadow-lg">
                 <h3 className="text-lg font-bold mb-4">Product Filters</h3>
                 <div className="mb-4">
@@ -26,9 +36,13 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange }) 
                         onChange={(e) => handleCategoryChange(e.target.value)}
                     >
                         <option value="">All Categories</option>
-                        {categories.map((category, index) => (
-                            <option key={index} value={category}>{category}</option>
-                        ))}
+                        {categories.map((category, index) => {
+                            if (defaultCat === category) {
+                                return <option key={index} value={category} selected>{category}</option>
+                            } else {
+                                return <option key={index} value={category}>{category}</option>
+                            }
+                        })}
                     </select>
                 </div>
                 <div className="mb-4">

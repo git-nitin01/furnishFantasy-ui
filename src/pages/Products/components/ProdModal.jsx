@@ -151,7 +151,6 @@ console.log("modal", modal, isModal)
                           img,
                         },
                       })
-                      setIsModal(false);
                     }
                     }
                   >
