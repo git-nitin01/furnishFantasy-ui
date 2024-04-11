@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageLoader from './ImageLoader';
+import ImageLoader from '../../Products/components/ImageLoader';
 import $ from 'jquery';
 
 const Spinner = () => {
@@ -11,7 +11,7 @@ const Spinner = () => {
       }) 
     });
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="flex justify-center items-center">
         <span id="load-spinner" className="z-2 inline-block rounded-full h-28 w-28 border-4  border-b-0 border-l-0  border-gray-900">
         </span>
         <ImageLoader />

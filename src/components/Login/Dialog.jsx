@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import SignIn from './SignIn'
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 import SignUp from './SignUp'
+import axios from 'axios'
 import $ from 'jquery'
 
-const Dialog = () => {
+const Dialog = ({setIsUser}) => {
 
     // false --> Sign in
     // true --> Sign up
@@ -35,13 +36,46 @@ const Dialog = () => {
     })
 
     $(() => {
+
+        $('#inner-sign-in').on('click', (e) => {
+            const errorClass = 'before-content before:text-red-500'
+            const successClass = 'before-content-success before:text-green-500'
+            const email = $('#sign-in-email').val();
+            const password = $('#sign-in-pass').val();
+            axios({
+                method: 'post',
+                url: 'https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/user/login',
+                data:
+                {
+                    "custEmail": email,
+                    "custPassword": password
+                }
+            }).then((response) => {
+                console.log(response)
+                $(`#inner-sign-in`).removeClass(`${errorClass} before:left-[0]`)
+                $('#inner-sign-in').attr('data-content', `${response.data.message}`)
+                $('#inner-sign-in').addClass(`${successClass} before:left-[0]`)
+                // setting the user in local storage
+                localStorage.setItem('userId', JSON.stringify(response.data.data[0].custID))
+                localStorage.setItem('userName', JSON.stringify(response.data.data[0].custName))
+                localStorage.setItem('userEmail', JSON.stringify(response.data.data[0].custEmail))
+                localStorage.setItem('userPassword', JSON.stringify(response.data.data[0].custPassword))
+                setIsUser(true)
+            }).catch((error) => {
+                console.log(error)
+                $('#inner-sign-in').attr('data-content', `${error.response.data.message}`)
+                $('#inner-sign-in').addClass(`${errorClass} before:left-[0]`)
+            })
+        })
+
+
         let errorMessage = ''
-        const errorClass = 'before-content before:text-red-500'
 
         // checking if email and retype email are same
         $('#inner-sign-up').on('submit', (e) => {
             e.preventDefault();
             $('#inner-sign-up').removeClass('before-content-success before:text-green-500')
+            const user = $('#user').val();
             const email = $('#email').val();
             const retypeEmail = $('#reEmail').val();
             if (email !== retypeEmail) {
@@ -78,13 +112,26 @@ const Dialog = () => {
 
             // checking if the error message is empty
             if (errorMessage.length === 0) {
-                $('#inner-sign-up').attr('data-content', 'Sign Up Successful')
-                $('#inner-sign-up').removeClass(errorClass)
-                $('#inner-sign-up').addClass('before-content-success before:text-green-500')
-                $('#inner-sign-up').trigger('reset')
+                axios({
+                    method: 'post',
+                    url: 'https://furnishantasy.blacksmoke-0e20ea33.eastus.azurecontainerapps.io/furnishFantasy/user/register',
+                    data: {
+                        "custName": user,
+                        "custEmail": email,
+                        "custPassword": password
+                     }                     
+                }).then((response) => {
+                    console.log(response)
+                    $('#inner-sign-up').attr('data-content', `${response.data.message}`)
+                    $('#inner-sign-up').removeClass(errorClass)
+                    $('#inner-sign-up').addClass('before-content-success before:text-green-500')
+                    $('#inner-sign-up').trigger('reset')
+                }).catch((error) => {
+                    console.log(error)
+                    $('#inner-sign-up').attr('data-content', `${error.response.data.message}`)
+                })
             }
-
-        })
+    })
 
         
 

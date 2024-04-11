@@ -1,12 +1,16 @@
 import "./App.css";
 import AppRouter from "./routes";
+import { DataProvider } from "./Context/DataContext";
 
 function App() {
+
   console.log("App")
   return (
-    <div>
+    <DataProvider>
+      <div>
         <AppRouter />
-    </div>
+      </div>
+    </DataProvider>    
   );
 }
 

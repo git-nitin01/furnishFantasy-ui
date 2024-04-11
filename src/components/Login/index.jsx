@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from './Modal';
-import useAuth from '../../hooks/useAuth';
 import Dialog from './Dialog';
 
 const Login = () => {
-    const { user } = useAuth(); // Assuming you have an authentication context or hook
-
-
+    const [isUser, setIsUser] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const styles = "text-black bg-transparent p-0 border-0 focus:outline-none";
 
@@ -14,12 +11,29 @@ const Login = () => {
         setIsClicked(!isClicked);
     }
 
+    useEffect(() => {
+        if(localStorage.getItem('userName')) {
+            setIsUser(true);
+        }
+    }, [isUser]);
+
+    const logOutHandler = () => {
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userEmail'); 
+        localStorage.removeItem('userPassword');
+        setIsUser(false);
+    };
 
     return (
         <>
-            {user ? (
+            {isUser ? (
               <>
-                <span className="mr-2">Welcome, {user?.name}</span>
+                {console.log(`Welcome, ${localStorage.getItem('userName')}`)}
+                <span className="mr-2">Welcome, {localStorage.getItem('userName')}</span>
+                <button className={styles} onClick={logOutHandler}>
+                    Logout
+                </button>
               </>
             ) : 
             (<>
@@ -27,7 +41,7 @@ const Login = () => {
                     Login
                 </button>
                 <Modal isActivated={isClicked}>
-                    <Dialog />
+                    <Dialog setIsUser={setIsUser}/>
                 </Modal>
             </>
             )
