@@ -33,7 +33,7 @@ const Card = React.memo(({ item, index }) => {
           <ProdModal
             name={item.name}
             category={item.category}
-            price={item.price}
+            price={calculateDiscountedPrice(item.price, item.discount)}
             modal={cardModal}
             description={item.description}
             id={item.id}
