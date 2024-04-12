@@ -73,6 +73,7 @@ const Dialog = ({setIsUser}) => {
 
         // checking if email and retype email are same
         $('#inner-sign-up').on('submit', (e) => {
+            const errorClass = 'before-content before:text-red-500'
             e.preventDefault();
             $('#inner-sign-up').removeClass('before-content-success before:text-green-500')
             const user = $('#user').val();
