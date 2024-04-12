@@ -2,7 +2,7 @@ import $ from "jquery";
 import React, { useState } from "react";
 import ProdModal from "../../Products/components/ProdModal";
 
-const Card = React.memo(({ item, index }) => {
+const Card = React.memo(({ item, index, category }) => {
   const [cardModal, setCardModal] = useState(false);
 
   const handleCardModal = () => {
@@ -40,23 +40,25 @@ const Card = React.memo(({ item, index }) => {
           </p>
         </a>
       </div>
-
-      {cardModal && (
-        <ProdModal
-          name={item.name}
-          category={item.category}
-          price={calculateDiscountedPrice(item.price, item.discount)}
-          modal={cardModal}
-          description={item.description}
-          id={item.id}
-          img={item.image}
-        />
-      )}
+      
+        {cardModal && (
+          <ProdModal
+            name={item.name}
+            category={category}
+            price={calculateDiscountedPrice(item.price, item.discount)}
+            modal={cardModal}
+            description={item.description}
+            id={item.id}
+            img={item.image}
+          />
+        )}
     </>
   );
 });
 
-const FeaturedSection = ({ clearance }) => {
+
+const FeaturedSection = ({clearance, categories}) => {
+
   // Apply styles using jQuery
   $(document).ready(function () {
     $(".photo").hover(
@@ -80,12 +82,12 @@ const FeaturedSection = ({ clearance }) => {
 
   return (
     <main className="text-black">
-      <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
-
-      <div className="flex flex-wrap justify-start sm:justify-center gap-8">
-        {clearance.map((item, index) => (
-          <Card item={item} index={index} key={index} />
-        ))}
+       <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
+     
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+        {clearance.map((item, index) => <Card item={item} index={index} category={
+          categories.find((category) => category.id === item.category).title
+        }/>)}
       </div>
     </main>
   );

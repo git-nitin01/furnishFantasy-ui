@@ -11,7 +11,7 @@ const Home = ({ products, categories, clearance }) => {
     <main className="text-[black]">
         <Hero />
         <div className="p-8"><CategoriesSection products={products} categories={categories} /></div>
-        <div className="p-8"><FeaturedSection clearance={clearance} /></div>
+        <div className="p-8"><FeaturedSection clearance={clearance} categories={categories} /></div>
         <div className="p-8"><SpecialOffers /></div>
         <div className="p-8"><FAQs /></div>
         <NewsletterSignup />

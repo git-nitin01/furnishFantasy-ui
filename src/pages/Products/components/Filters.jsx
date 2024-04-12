@@ -2,30 +2,20 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange, defaultCat }) => {
+const Filters = ({ categories, categoryNames, filterState, setFilterState }) => {
 
     useEffect(() => {
-        if (defaultCat) {
-            onCategoryChange(defaultCat);
-        }
-    }, []);
-
-    const handleCategoryChange = (category) => {
-        onCategoryChange(category);
-    };
-
-    const handlePriceChange = (price) => {
-        onPriceChange(price);
-    };
-
-    const handleSortChange = (sort) => {
-        onSortChange(sort);
-    };
-
+        // filter products
+        console.log("Filter State changed");
+        console.log(filterState);
+      }, [filterState]);
+    
     return (
         <div className="w-full lg:w-1/4 lg:mr-8 mb-8 lg:mb-0">
             {console.log("here in the filters")}
             {console.log(categories)}
+            {console.log(categoryNames)}
+
             <div className="bg-white p-4 rounded-lg shadow-lg">
                 <h3 className="text-lg font-bold mb-4">Product Filters</h3>
                 <div className="mb-4">
@@ -33,14 +23,14 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange, de
                     <select
                         id="category"
                         className="block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
-                        onChange={(e) => handleCategoryChange(e.target.value)}
+                        onChange={(e) => setFilterState({ ...filterState, category: e.target.value })}
                     >
                         <option value="">All Categories</option>
                         {categories.map((category, index) => {
-                            if (defaultCat === category) {
-                                return <option key={index} value={category} selected>{category}</option>
+                            if (filterState.category === category) {
+                                return <option key={index} value={category} selected>{categoryNames[index]}</option>
                             } else {
-                                return <option key={index} value={category}>{category}</option>
+                                return <option key={index} value={category}>{categoryNames[index]}</option>
                             }
                         })}
                     </select>
@@ -50,7 +40,7 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange, de
                     <select
                         id="price"
                         className="block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
-                        onChange={(e) => handlePriceChange(e.target.value)}
+                        onChange={(e) => setFilterState({ ...filterState, price: e.target.value })}
                     >
                         <option value="">All Prices</option>
                         <option value="0-25">$0 - $25</option>
@@ -64,7 +54,7 @@ const Filters = ({ categories, onCategoryChange, onPriceChange, onSortChange, de
                     <select
                         id="sort"
                         className="block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:border-indigo-500"
-                        onChange={(e) => handleSortChange(e.target.value)}
+                        onChange={(e) => setFilterState({ ...filterState, sort: e.target.value })}
                     >
                         <option value="">Default</option>
                         <option value="price-asc">Price: Low to High</option>

@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useState, useEffect } from "react";
+import { act } from "react-dom/test-utils";
 
 const initialState = {
   products: [],
@@ -27,10 +28,10 @@ const cartReducer = (state, action) => {
       } else {
         return {
           ...state,
-          quantity: state.quantity + 1,
+          quantity: action.payload.quantity + state.quantity,
           products: state.products.map((item) => {
             if (item.id === action.payload.id) {
-              item.quantity += 1;
+              item.quantity += action.payload.quantity;
             }
             return item;
           }),
