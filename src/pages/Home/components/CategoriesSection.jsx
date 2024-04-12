@@ -13,7 +13,7 @@ const CategoriesSection = ({categories}) => {
   return (
     <main className="text-black">
       <h2 className="text-3xl font-bold mb-6 text-center">Categories</h2>
-      <div className="flex flex-wrap justify-start sm:justify-center gap-8">
+      <div className="flex flex-wrap justify-center gap-8">
         {categories.map(category => (
           <div  key={category.id} className="category-item w-72 sm:w-96 hidden bg-gray-100 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1" onClick={() => window.location.href = `/gallery/${category.id}`}> 
             <img src={category.image} alt={category.title} className="w-full h-40 object-contain mix-blend-darken mt-4 rounded-t-lg" />

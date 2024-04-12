@@ -72,9 +72,6 @@ function Gallery({ products, categories, defaultCat}) {
   const catList = categories.map((category) => category.id);
   const catNames = categories.map((category) => category.title);
 
-  console.log("here in the gallery");
-  console.log(categories);
-  console.log(catList)
   return (
     <main className="mt-10 px-8 bg-[#EEEEEE]">
     <div className="py-10 mx-auto">
@@ -86,7 +83,7 @@ function Gallery({ products, categories, defaultCat}) {
               filterState={filterState}
               setFilterState={setFilterState}
             />
-            <Products products={filteredProducts} categories={categories}/>
+            <Products products={filteredProducts} categories={categories} setFilterState={setFilterState}/>
       </div>
     </div>
   </main>

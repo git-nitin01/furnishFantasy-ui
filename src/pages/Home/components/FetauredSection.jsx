@@ -82,9 +82,9 @@ const FeaturedSection = ({clearance, categories}) => {
 
   return (
     <main className="text-black">
-       <h2 className="text-3xl font-bold mb-6 text-center">Featured Products</h2>
+       <h2 className="text-3xl font-bold mb-6 text-center">Clearance Sale</h2>
      
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+      <div className="flex flex-wrap justify-center gap-8">
         {clearance.map((item, index) => <Card item={item} index={index} category={
           categories.find((category) => category.id === item.category).title
         }/>)}
