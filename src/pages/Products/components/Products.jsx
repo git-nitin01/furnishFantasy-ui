@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Prod from './Prod';
 
-function Products({ products }) {
+function Products({ products, categories }) {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 6; // Change this value as needed
 
@@ -17,7 +17,8 @@ console.log('currentProducts', currentProducts)
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6">
             {currentProducts.map((product) => (
-                <Prod key={product.id} des={product.description} id={product.id} name={product.name} caption={product.caption} category={product.category} price={product.price} img={product.image} />
+                <Prod key={product.id} des={product.description} id={product.id} name={product.name} caption={product.caption} 
+                category={categories.find((category) => category.id === product.category).title} price={product.price} img={product.image} />
             ))}
             {/* Second Row */}
             {products.length > productsPerPage && (

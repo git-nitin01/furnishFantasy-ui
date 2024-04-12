@@ -139,7 +139,7 @@ console.log("modal", modal, isModal)
                   <button
                     className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition duration-300"
                     onClick={() =>{
-                      setQuantity(1);
+                      {console.log(quantity)}
                       dispatch({
                         type: "ADD_PRODUCTS",
                         payload: {
@@ -151,6 +151,7 @@ console.log("modal", modal, isModal)
                           img,
                         },
                       })
+                      setQuantity(1);
                     }
                     }
                   >
