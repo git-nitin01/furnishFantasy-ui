@@ -19,7 +19,8 @@ import PrivateLayout from "../components/PrivateLayout";
     console.log(dataRef.current);
     useEffect(() => {
       if(data.products.length > 0 && data.categories.length > 0 && data.clearance.length > 0){
-        console.log("Data fetched");
+       data.categories = data.categories.filter((category) => category?.id !== "CAT0_7")
+       data.clearance = [...new Set(data.clearance.filter(obj => obj.id))];
         dataRef.current = data;
         setWait(false);
       }
