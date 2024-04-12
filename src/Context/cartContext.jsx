@@ -35,7 +35,7 @@ const cartReducer = (state, action) => {
             }
             return item;
           }),
-          total: state.total + action.payload.price,
+          total: state.total + action.payload.price * action.payload.quantity,
         };
       }
     case "ADD_PRODUCT":
